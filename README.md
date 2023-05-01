@@ -1,5 +1,7 @@
 # Chat App
 
+![chat app](https://i.imgur.com/vibuYcF.png) <br>
+
 ## Overview
 Chat is an application for both Android /iOS created with Reactive Native.
 The app provides users with a chart interface and options to share images and their location.
