@@ -23,7 +23,7 @@ const Chat = ({ route, navigation }) => {
         user: {
           _id: 2,
           name: "React Native",
-          avatar: "https://placeimg.com/140/140/any",
+          avatar: "http://placekitten.com/200/300",
         },
       },
       {
