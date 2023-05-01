@@ -1,14 +1,16 @@
+import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { Image, ImageBackground, StyleSheet, View, Text, TextInput, TouchableOpacity, Button } from 'react-native';
 
-const Start = () => {
+const Start = ({ navigation }) => {
+  
   const [name, setName] = useState('');
   const [color, setColor] = useState('');
 
   const backgroundColor = {
     black: { backgroundColor: '#090C08'},
     purple: { backgroundColor: '#474055'},
-    grey: { backgroundColor: '#89A95A5'},
+    grey: { backgroundColor: '#8A95A5'},
     green: { backgroundColor: '#B9C6AE'}
   }
 
@@ -20,7 +22,7 @@ const Start = () => {
         </View>
         <View style={styles.box}>
           <View style={styles.textcontainer}>
-            <Image styles={styles.icon} source={require('..//assets/icon.png')}></Image>
+            <Image styles={styles.icon} source={require('..//assets/user-icon.png')}></Image>
             <TextInput
               style= {styles.textInput}
               value={name}
@@ -30,26 +32,26 @@ const Start = () => {
           </View>
           <Text style={styles.chooseBackgroundText}>Choose background color: {color.backgroundColor}</Text>
           <View style={styles.colorBox}>
-            <TouchableOpacity>
+            <TouchableOpacity
               style={[styles.colorButton, backgroundColor.black, color === backgroundColor.black.backgroundColor ? styles.selectedColorButton : '']}
-              onPress={() => setColor(backgroundColor.black.backgroundColor)}
+              onPress={() => setColor(backgroundColor.black.backgroundColor)} >
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity
               style= {[styles.colorButton, backgroundColor.purple, color === backgroundColor.purple.backgroundColor ? styles.selectedColorButton : '']}
-              onPress={() => setColor(backgroundColor.purple.backgroundColor)}
+              onPress={() => setColor(backgroundColor.purple.backgroundColor)} >
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity
               style={[styles.colorButton, backgroundColor.grey, color === backgroundColor.grey.backgroundColor ? styles.selectedColorButton : '']}
-              onPress={() => setColor(backgroundColor.grey.backgroundColor)}
+              onPress={() => setColor(backgroundColor.grey.backgroundColor)} >
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity
               style={[styles.colorButton, backgroundColor.green, color === backgroundColor.green.backgroundColor ? styles.selectedColorButton : '']}
-              onPress={() => setColor(backgroundColor.green.backgroundColor)}
+              onPress={() => setColor(backgroundColor.green.backgroundColor)} >
             </TouchableOpacity>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity
             style={styles.chatButton}
-            onPress={() => navigation.navigate('Chat', { name: name, color: color})}
+            onPress={() => navigation.navigate('Chat', { name: name, color: color})} >
             <Text style={styles.chatButtonText}>Start chatting</Text>
           </TouchableOpacity>
         </View>
