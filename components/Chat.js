@@ -3,8 +3,11 @@ import { KeyboardAvoidingView, Platform, StyleSheet, View } from 'react-native';
 //Import Gifted Chat library
 import { Bubble, GiftedChat } from 'react-native-gifted-chat';
 
-const Chat = ({ route, navigation }) => {
-  const { name, color } = route.params;
+//Import elements to fetch messages from database
+import { collection, getDocs, addDoc, onSnapshot, query, orderBy } from "firebase/firestore";
+
+const Chat = ({ db, route, navigation }) => {
+  const { name, color, uid } = route.params;
 
   //State initialization
   const [messages, setMessages] = useState([]);
@@ -15,28 +18,41 @@ const Chat = ({ route, navigation }) => {
   }, []);
 
   useEffect(() => {
-    setMessages([
-      {
-        _id: 1,
-        text: "Hello Gab",
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: "React Native",
-          avatar: "http://placekitten.com/200/300",
-        },
-      },
-      {
-        _id: 2,
-        text: name + "  you've entered the chat",
-        createdAt: new Date(),
-        system: true,
-      },
-    ]);
+    //Set the state with a static message
+    navigation.setOptions({ title: name });
+
+
+    addDoc(collection(db, "messages"), {
+      _id: Date.now(),
+      text: name + " entered the chat",
+      createdAt: new Date(),
+      system: true,
+    });
+
+    const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
+    const unsubMessages = onSnapshot(q, (documentsSnapshot) => {
+      let newMessages = [];
+      documentsSnapshot.forEach(doc => {
+        newMessages.push(
+          {
+            id: doc.id,
+            ...doc.data(),
+            createdAt: new Date(doc.data().createdAt.toMillis())
+          })
+      });
+      setMessages(newMessages);
+    });
+
+    // Clean up code
+    return () => {
+      if (unsubMessages) unsubMessages();
+    }
   }, []);
 
   //Custom function onSend() called when a user sends a message
   const onSend = (newMessages) => {
+    //setMessages(previousMessages => GiftedChat.append(previousMessages, newMessages))
+    addDoc(collection(db, "messages"), newMessages[0])
     setMessages(previousMessages => GiftedChat.append(previousMessages, newMessages))
   }
 
@@ -59,7 +75,8 @@ const Chat = ({ route, navigation }) => {
       renderBubble={renderBubble}
       onSend={messages => onSend(messages)}
       user={{
-        _id: 1
+        _id: uid,
+        name: name,
       }}
     />
     {/*Fix keyboard hides the message input field on Android*/}
