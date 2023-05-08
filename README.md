@@ -17,7 +17,7 @@
 
 
 ## Overview
-Chat is an application for both Android /iOS created with Reactive Native and Expo.
+Chat App is an application for both Android /iOS created with Reactive Native and Expo.
 The app provides users with a chart interface and options to take pictures, and share images and their location.
 Additionally users can choose a theme color on the start screen before entering the chat.
 
