@@ -4,16 +4,16 @@
 
 ## Table of contents
 
--[Overview](#overview)
--[How to get the project running](#how-to-get-the-project-running)
-  -[Setting up with Expo](#setting-up-with-expo)
-  -[Setting up Expo Go app to test your app on the phone](#setting-up-expo-go-app-to-test-your-app-on-the-phone)
-  -[Setting up a device emulator](#setting-up-a-device-emulator)
-  -[Setting up a Firestore database](#setting-up-a-firestore-database)
-  -[Installation](#installation)
--[Built with](#built-with)
--[Project dependencies](#project-dependencies)
--[Project devDependencies](#project-devdependencies)
+- [Overview](#overview)
+- [How to get the project running](#how-to-get-the-project-running)
+  - [Setting up with Expo](#setting-up-with-expo)
+  - [Setting up Expo Go app to test your app on the phone](#setting-up-expo-go-app-to-test-your-app-on-the-phone)
+  - [Setting up a device emulator](#setting-up-a-device-emulator)
+  - [Setting up a Firestore database](#setting-up-a-firestore-database)
+  - [Installation](#installation)
+- [Built with](#built-with)
+- [Project dependencies](#project-dependencies)
+- [Project devDependencies](#project-devdependencies)
 
 
 ## Overview
