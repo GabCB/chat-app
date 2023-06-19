@@ -1,6 +1,6 @@
 # Chat App
 
-![chat app](https://i.imgur.com/CedInk0.png) <br>
+![chat app](https://i.imgur.com/KxmqtP2.mp4) <br>
 
 ## Table of contents
 
