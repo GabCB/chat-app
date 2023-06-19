@@ -1,11 +1,6 @@
 # Chat App
 
-<!-- ![chat app](https://i.imgur.com/CedInk0.png) <br> -->
-![](ChatApp.mp4)
-<video width="320" height="240" controls>
-  <source src="https://i.imgur.com/KxmqtP2.mp4" type="video/mp4">
-</video>
-
+![chat app](https://i.imgur.com/CedInk0.png) <br>
 
 ## Table of contents
 
